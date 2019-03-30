@@ -14,6 +14,10 @@
 // Set only one tap for TT keys
 #define TAPPING_TOGGLE 1
 
+// Decrease value of tapping timeout to be able to have a rapid hold
+#undef TAPPING_TERM
+#define TAPPING_TERM 100
+
 // The Tap Dance identifiers, used in the TD keycode and tap_dance_actions array.
 #define TAP_MACRO 0
 
@@ -25,9 +29,9 @@
 
 // Some combined keys (one normal keycode when tapped and one modifier or layer
 // toggle when held).
-#define CCED_RCTL    LT(MOD_RCTL, BP_CCED)        // CCED and Ctrl when hold.
-#define SFT_LCK      MD(MOD_LSFT, KC_CAPSLOCK)    // Caps lock and shift when hold
-#define SFTRALT      KC_LSFT | KC_RALT            // SHIFT + ALTGR
+#define CCED_RCTL    MT(MOD_RCTL, BP_CCED)        // CCED and Ctrl when hold.
+#define SFT_LCK      MT(MOD_LSFT, KC_CAPSLOCK)    // Caps lock and shift when hold
+#define SFTRALT      MT(MOD_LSFT | MOD_RALT, KC_NO) // SHIFT + ALTGR when hold
 
 // The most portable copy/paste keys (windows (mostly), linux, and some terminal emulators).
 #define MK_CUT    LSFT(KC_DEL)  // shift + delete
@@ -51,8 +55,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox(
     /* left hand */
     KC_ESC,   BP_DQOT, BP_LGIL, BP_RGIL, BP_LPRN, BP_RPRN, BP_DLR,
-    KC_TAB,   BP_B,    BP_ECUT, BP_P,    BP_O,    BP_EGRV, ___,
-    ___,  	  BP_A,    BP_U,    BP_I,    BP_E,    BP_COMM,
+    KC_TAB,   BP_B,    BP_ECUT, BP_P,    BP_O,    BP_EGRV, KC_ESC,
+    BP_UNDS,  BP_A,    BP_U,    BP_I,    BP_E,    BP_COMM,
     KC_LCTRL, BP_AGRV, BP_Y,    BP_X,    BP_DOT,  BP_K,    KC_BSPC,
     TT(FN),   BP_ECRC, ___,     KC_LGUI, KC_LALT,
                                                           TT(NUM),  KC_PSCR,
@@ -66,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LALT,  KC_RGUI, ___,         ___,     TT(FN),
     ___,     TD(TAP_MACRO),
     SFTRALT,
-    KC_RALT, SFT_LCK, KC_SPC,
+    KC_RALT, SFT_LCK, KC_SPC),
 
   // Layer 1: function and media keys.
   [FN] = LAYOUT_ergodox(
@@ -101,11 +105,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                    ___,
                                          ___, ___, ___,
     /* right hand */
-         ___,   ___,   KC_PPLS, KC_PMNS, KC_PSLS, ___,     ___,
-         ___,   ___,   KC_P7,   KC_P8,   KC_P9,   KC_PEQL, ___,
-                ___,   KC_P4,   KC_P5,   KC_P6,   ___,     ___,
-         ___,   ___,   KC_P1,   KC_P2,   KC_P3,   ___,     ___,
-                       ___,     KC_P0,   ___,     ___,     ___,
+         ___,   ___,   KC_PPLS, KC_PMNS, KC_PSLS,    ___,     ___,
+         ___,   ___,   KC_P7,   KC_P8,   KC_P9,      KC_PEQL, ___,
+                ___,   KC_P4,   KC_P5,   KC_P6,      ___,     ___,
+         ___,   ___,   KC_P1,   KC_P2,   KC_P3,      ___,     ___,
+                       ___,     KC_P0,   KC_KP_DOT,  ___,     ___,
     ___, ___,
     ___,
     ___, ___, ___),
@@ -250,11 +254,18 @@ uint32_t layer_state_set_user(uint32_t state) {
     led_2_off();
   }
 
-  if (LAYER_ON(NUMS)) {
-    led_3_on();
+  if (LAYER_ON(NUM)) {
+    // enable NUMLOCK if it is not
+	if (!(sys_led_state & sys_led_mask_num_lock)) {
+	  register_code(KC_NUMLOCK);
+	  unregister_code(KC_NUMLOCK);	
+	}
+	led_3_on();
   } else {
     led_3_off();
   }
 
+  led_set_user(sys_led_state);
+ 
   return state;
 };
