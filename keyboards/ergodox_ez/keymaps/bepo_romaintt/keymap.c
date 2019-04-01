@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BSPC, BP_DCRC, BP_V,     BP_D,    BP_L,        BP_J,    BP_Z,
                  BP_C,    BP_T,     BP_S,    BP_R,        BP_N,    M_SFT,
         KC_DEL,  BP_APOS, BP_Q,     BP_G,    BP_H,        BP_F,    CCED_RCTL,
-                          KC_RALT,  KC_ALT,  KC_RGUI,     CTRL_ALT,TT(FN),
+                          KC_RALT,  KC_LALT,  KC_RGUI,     CTRL_ALT,TT(FN),
     KC_AUDIO_VOL_UP, TD(TAP_MACRO),
     KC_AUDIO_MUTE,
     KC_AUDIO_VOL_DOWN, ___, KC_SPC),
