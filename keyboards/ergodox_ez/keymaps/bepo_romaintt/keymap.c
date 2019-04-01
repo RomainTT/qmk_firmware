@@ -29,9 +29,11 @@
 
 // Some combined keys (one normal keycode when tapped and one modifier or layer
 // toggle when held).
-#define CCED_RCTL    MT(MOD_RCTL, BP_CCED)        // CCED and Ctrl when hold.
+#define CCED_RCTL    MT(MOD_RCTL, BP_CCED)        // CCED and Ctrl when hold
+#define W_LCTL       MT(MOD_LCTL, BP_W)           // W and Ctrl when hold
+#define M_SFT        MT(MOD_RSFT, BP_M)			  // M and right shift when hold
 #define SFT_LCK      MT(MOD_LSFT, KC_CAPSLOCK)    // Caps lock and shift when hold
-#define SFTRALT      MT(MOD_LSFT | MOD_RALT, KC_NO) // SHIFT + ALTGR when hold
+#define CTRL_ALT     MT(MOD_LCTL | MOD_RALT, KC_NO) // CTRL + ALT when hold
 
 // The most portable copy/paste keys (windows (mostly), linux, and some terminal emulators).
 #define MK_CUT    LSFT(KC_DEL)  // shift + delete
@@ -56,21 +58,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* left hand */
     KC_ESC,   BP_DQOT, BP_LGIL, BP_RGIL, BP_LPRN, BP_RPRN, BP_DLR,
     KC_TAB,   BP_B,    BP_ECUT, BP_P,    BP_O,    BP_EGRV, KC_ESC,
-    BP_UNDS,  BP_A,    BP_U,    BP_I,    BP_E,    BP_COMM,
-    KC_LCTRL, BP_AGRV, BP_Y,    BP_X,    BP_DOT,  BP_K,    KC_BSPC,
-    TT(FN),   BP_ECRC, ___,     KC_LGUI, KC_LALT,
+    SFT_LCK,  BP_A,    BP_U,    BP_I,    BP_E,    BP_COMM,
+    W_LCTL,   BP_ECRC, BP_AGRV, BP_Y,    BP_X,    BP_DOT,  BP_K,
+    TT(FN),   CTRL_ALT,KC_LGUI, KC_LALT, KC_RALT,
                                                           TT(NUM),  KC_PSCR,
-                                                                    SFTRALT,
-                                                  KC_ENT, SFT_LCK,  KC_RALT,
+                                                                    ___,
+                                                  KC_ENT, ___,      ___,
     /* right hand */
-        BP_PERC, BP_AT,   BP_PLUS,  BP_MINS, BP_SLSH,     BP_ASTR, BP_W,
-        ___,     BP_DCRC, BP_V,     BP_D,    BP_L,        BP_J,    BP_Z,
-                 BP_C,    BP_T,     BP_S,    BP_R,        BP_N,    BP_M,
+        BP_PERC, BP_AT,   BP_PLUS,  BP_MINS, BP_SLSH,     BP_ASTR, BP_EQL,
+        KC_BSPC, BP_DCRC, BP_V,     BP_D,    BP_L,        BP_J,    BP_Z,
+                 BP_C,    BP_T,     BP_S,    BP_R,        BP_N,    M_SFT,
         KC_DEL,  BP_APOS, BP_Q,     BP_G,    BP_H,        BP_F,    CCED_RCTL,
-                          KC_LALT,  KC_RGUI, ___,         ___,     TT(FN),
-    ___,     TD(TAP_MACRO),
-    SFTRALT,
-    KC_RALT, SFT_LCK, KC_SPC),
+                          KC_RALT,  KC_ALT,  KC_RGUI,     CTRL_ALT,TT(FN),
+    KC_AUDIO_VOL_UP, TD(TAP_MACRO),
+    KC_AUDIO_MUTE,
+    KC_AUDIO_VOL_DOWN, ___, KC_SPC),
 
   // Layer 1: function and media keys.
   [FN] = LAYOUT_ergodox(
