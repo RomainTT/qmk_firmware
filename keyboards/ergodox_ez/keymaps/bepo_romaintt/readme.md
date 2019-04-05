@@ -1,13 +1,15 @@
-# Bépo compatible keymap for the Ergodox EZ, *TypeMatrix* style.
+# Bépo compatible keymap for the Ergodox EZ
 
 This keymap is meant to be used with a [Bépo](http://bepo.fr) layout.
 
-![The Keymap]()
+Maintainer: Romain TAPREST
+
+![The Keymap](https://i.imgur.com/Scu5Dqx.png)
 
 ## Build instruction
 
+Follow general instructions of QMK firmware and run the following command to build:
 
-## Debug
+    make ergodox_ez:bepo_romaintt
 
-See https://github.com/tmk/tmk_keyboard#magic-commands for command that can help
-debug, together with the [hid_listen tool](https://docs.qmk.fm/faq_debug.html).
+
