@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Layer 0: basic keys.
   [BASE] = LAYOUT_ergodox(
     /* left hand */
-    KC_ESC,   BP_DQOT, BP_LGIL, BP_RGIL, BP_LPRN, BP_RPRN, BP_DLR,
+    BP_DLR,   BP_DQOT, BP_LGIL, BP_RGIL, BP_LPRN, BP_RPRN, ___,
     KC_TAB,   BP_B,    BP_ECUT, BP_P,    BP_O,    BP_EGRV, KC_ESC,
     SFT_LCK,  BP_A,    BP_U,    BP_I,    BP_E,    BP_COMM,
     W_LCTL,   BP_ECRC, BP_AGRV, BP_Y,    BP_X,    BP_DOT,  BP_K,
