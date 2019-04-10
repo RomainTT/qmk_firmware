@@ -33,7 +33,7 @@
 #define W_LCTL       MT(MOD_LCTL, BP_W)           // W and Ctrl when hold
 #define M_SFT        MT(MOD_RSFT, BP_M)			  // M and right shift when hold
 #define SFT_LCK      MT(MOD_LSFT, KC_CAPSLOCK)    // Caps lock and shift when hold
-#define CTRL_ALT     MT(MOD_LCTL | MOD_RALT, KC_NO) // CTRL + ALT when hold
+#define CTRL_ALT     MT(MOD_LCTL | MOD_LALT, KC_NO) // CTRL + ALT when hold
 
 // The most portable copy/paste keys (windows (mostly), linux, and some terminal emulators).
 #define MK_CUT    LSFT(KC_DEL)  // shift + delete
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BSPC, BP_DCRC, BP_V,     BP_D,    BP_L,        BP_J,    BP_Z,
                  BP_C,    BP_T,     BP_S,    BP_R,        BP_N,    M_SFT,
         KC_DEL,  BP_APOS, BP_Q,     BP_G,    BP_H,        BP_F,    CCED_RCTL,
-                          KC_RALT,  KC_LALT,  KC_RGUI,     CTRL_ALT,TT(FN),
+                          KC_RALT,  KC_LALT,  KC_RGUI,    CTRL_ALT,TT(FN),
     KC_AUDIO_VOL_UP, TD(TAP_MACRO),
     KC_AUDIO_MUTE,
     KC_AUDIO_VOL_DOWN, ___, KC_SPC),
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                              ___,    ___, ___,
     /* right hand */
         ___, KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F11,
-        ___, KC_HOME, KC_PGUP, KC_PGDN, KC_END,   ___,     KC_F12,
+        ___, KC_HOME, KC_PGDN, KC_PGUP, KC_END,   ___,     KC_F12,
              KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, ___,     ___,
         ___, ___,     ___,     ___,     ___,      ___,     ___,
                       ___,     ___,     ___,      ___,     ___,
