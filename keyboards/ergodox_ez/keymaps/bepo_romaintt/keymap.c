@@ -34,6 +34,7 @@
 #define M_SFT        MT(MOD_RSFT, BP_M)			  // M and right shift when hold
 #define SFT_LCK      MT(MOD_LSFT, KC_CAPSLOCK)    // Caps lock and shift when hold
 #define CTRL_ALT     MT(MOD_LCTL | MOD_LALT, KC_NO) // CTRL + ALT when hold
+#define CTRL_B		 RCTL(BP_B) 				  // CTRL + B once
 
 // The most portable copy/paste keys (windows (mostly), linux, and some terminal emulators).
 #define MK_CUT    LSFT(KC_DEL)  // shift + delete
@@ -63,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TT(FN),   CTRL_ALT,KC_LGUI, KC_LALT, KC_RALT,
                                                           TT(NUM),  KC_PSCR,
                                                                     ___,
-                                                  KC_ENT, ___,      ___,
+                                                  KC_ENT, CTRL_B,   ___,
     /* right hand */
         BP_PERC, BP_AT,   BP_PLUS,  BP_MINS, BP_SLSH,     BP_ASTR, BP_EQL,
         KC_BSPC, BP_DCRC, BP_V,     BP_D,    BP_L,        BP_J,    BP_Z,
