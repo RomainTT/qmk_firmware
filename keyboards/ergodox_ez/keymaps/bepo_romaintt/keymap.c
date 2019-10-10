@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* left hand */
     KC_SLEP, KC_F1, KC_F2,  KC_F3,   KC_F4,    KC_F5,    ___,
     ___,     ___,   ___,    ___,     ___,      ___,      ___,
-    ___,     ___,   ___,    ___,     ___,      ___,
+    ___,     ___,   ___,    KC_INS,  ___,      ___,
     ___,     ___,   MK_CUT, MK_COPY, MK_PASTE, ___,      ___,
     ___,     ___,   ___,    ___,     ___,
                                                      ___, ___,
